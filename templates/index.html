@@ -1,19 +1,7 @@
-<!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <title>The Classic Game Catalogue</title>
-     <link rel="stylesheet" type="text/css" href="/static/styles.css">
- </head>
- <body>
-     <header>
-         <div>
-             <h1>The Classic Game Catalogue</h1>
-             <p>Welcome! Come and see your favourite Classic Games.</p>
-             <nav>
-                 <a href="/games">View Games</a>
-             </nav>
-         </div>
-     </header>
- </body>
- </html>
+{% extends "layout.html" %}
+
+{% block title %}Home | Classic Game Collection{% endblock %}
+
+{% block content %}
+    <p>Welcome! Explore and share your favorite Classic video games.</p>
+{% endblock %}

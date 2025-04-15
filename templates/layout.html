@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Classic Game Collection{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Classic Game Collection</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/games">View Games</a>
+            <a href="/upload">Add Game</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
