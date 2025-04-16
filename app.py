@@ -10,5 +10,9 @@ def home():
 def view_games():
     return render_template("games.html")
 
+@app.route("/upload")
+def upload_game():
+    return render_template("upload.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
