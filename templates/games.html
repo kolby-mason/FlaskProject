@@ -3,6 +3,18 @@
 {% block title %}Games List{% endblock %}
 
 {% block content %}
-    <h2>Game Library</h2>
-    <!-- add games here -->
+<h2>Game Library</h2>
+{% if session.games %}
+    <ul>
+    {% for game in session.games %}
+        <li>
+            <h3>{{ game.title }}</h3>
+            <p><strong>Platform:</strong> {{ game.platform }}</p>
+            <p>{{ game.description }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No games added yet.</p>
+{% endif %}
 {% endblock %}
