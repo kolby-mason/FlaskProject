@@ -17,3 +17,16 @@ body {
      text-decoration: none;
      font-weight: bold;
  }
+
+ .flashes {
+    list-style: none;
+    padding: 0;
+}
+
+.flashes .message {
+    color: green;
+}
+
+.flashes .error {
+    color: red;
+}

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, url_for
+from flask import Flask, render_template, request, redirect, session, url_for, abort, flash
 import os
 
 app = Flask(__name__)
@@ -36,6 +36,23 @@ def upload_game():
 
         return redirect(url_for("view_games"))
 
+@app.route("/delete/<int:index>", methods=["POST"])
+def delete_game(index):
+    if "games" not in session:
+        abort(400)
+
+    games = session["games"]
+
+    if 0 <= index < len(games):
+        game_title = games[index]["title"]
+        del games[index]
+        session["games"] = games
+        session.modified = True
+        flash(f'{game_title} deleted successfully.', "message")
+    else:
+        flash("Invalid game index.", "error")
+
+    return redirect(url_for("view_games"))
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -11,6 +11,9 @@
             <h3>{{ game.title }}</h3>
             <p><strong>Platform:</strong> {{ game.platform }}</p>
             <p>{{ game.description }}</p>
+             <form action="{{ url_for('delete_game', index=loop.index0) }}" method="post" style="display:inline;">
+                <input type="submit" value="Delete">
+            </form>
         </li>
     {% endfor %}
     </ul>
