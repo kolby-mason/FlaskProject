@@ -1,8 +1,16 @@
 from flask import Flask, render_template, request, redirect, session, url_for, abort, flash
+from flask_session import Session
 import os
+import uuid
 
 app = Flask(__name__)
-app.secret_key = "super_secret_key"
+#app.secret_key = "super_secret_key"
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
+
+allowed_types = [".png", ".jpg", ".jpeg", ".gif"]
+file_save_location = "static/images"
 
 @app.route("/")
 def home():
@@ -25,15 +33,31 @@ def upload_game():
         platform = request.form["platform"]
         description = request.form["description"]
 
+        uploaded_file = request.files.get("image")
+        image_filename = None
+
+        if uploaded_file and uploaded_file.filename != "":
+            extension = os.path.splitext(uploaded_file.filename)[1].lower()
+            if extension in allowed_types:
+                unique_name = f"{uuid.uuid4().hex}{extension}"
+                filename = os.path.join(file_save_location, unique_name)
+                uploaded_file.save(filename)
+                image_filename = unique_name
+            else:
+                flash("Invalid image type. Only PNG, JPG, JPEG, or GIF are allowed.", "error")
+                return redirect("/add")
+
         game = {
             "title": title,
             "platform": platform,
-            "description": description
+            "description": description,
+            "image": image_filename
         }
 
         session["games"].append(game)
         session.modified = True
 
+        flash(f'"{title}" added successfully!', "success")
         return redirect(url_for("view_games"))
 
 @app.route("/delete/<int:index>", methods=["POST"])
