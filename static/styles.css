@@ -169,3 +169,12 @@ form input[type="submit"]:hover {
 .game-card:hover .game-info {
     opacity: 1;
 }
+
+.game-info .description::-webkit-scrollbar {
+    width: 4px;
+}
+
+.game-info .description::-webkit-scrollbar-thumb {
+    background-color: #66c0f4;
+    border-radius: 4px;
+}

@@ -57,7 +57,7 @@ def upload_game():
         session["games"].append(game)
         session.modified = True
 
-        flash(f'"{title}" added successfully!', "success")
+        flash(f"{title} added successfully!", "message")
         return redirect(url_for("view_games"))
 
 @app.route("/delete/<int:index>", methods=["POST"])
@@ -72,7 +72,7 @@ def delete_game(index):
         del games[index]
         session["games"] = games
         session.modified = True
-        flash(f'{game_title} deleted successfully.', "message")
+        flash(f"{game_title} deleted successfully.", "message")
     else:
         flash("Invalid game index.", "error")
 

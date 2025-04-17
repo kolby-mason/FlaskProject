@@ -10,7 +10,7 @@
             <div class="col">
                 <div class="game-card">
                     {% if game.image %}
-                    <img src="{{ url_for('static', filename='images/' ~ game.image) }}" alt="{{ game.title }}">
+                    <img src="{{ url_for("static", filename="images/" ~ game.image) }}" alt="{{ game.title }}">
                     {% endif %}
                      <div class="game-info">
                         <div class="game-header">
@@ -19,7 +19,7 @@
                         </div>
                         <div class="description">
                             <p>{{ game.description }}</p>
-                        <form action="{{ url_for('delete_game', index=loop.index0) }}" method="post">
+                        <form action="{{ url_for("delete_game", index=loop.index0) }}" method="post">
                             <button class="btn btn-danger btn-sm">Delete</button>
                         </form>
                         </div>
