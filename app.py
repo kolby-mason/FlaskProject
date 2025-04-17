@@ -45,7 +45,7 @@ def upload_game():
                 image_filename = unique_name
             else:
                 flash("Invalid image type. Only PNG, JPG, JPEG, or GIF are allowed.", "error")
-                return redirect("/add")
+                return redirect(url_for("upload_game"))
 
         game = {
             "title": title,
