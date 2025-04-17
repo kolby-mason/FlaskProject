@@ -178,3 +178,10 @@ form input[type="submit"]:hover {
     background-color: #66c0f4;
     border-radius: 4px;
 }
+
+.category img {
+    max-width: 100%; /* Ensures the image is responsive and scales with the container */
+    height: auto;    /* Maintains the aspect ratio */
+    display: block;  /* Ensures there are no unexpected gaps */
+    margin: 0 auto;  /* Centers the image */
+}

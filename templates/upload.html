@@ -3,21 +3,24 @@
 {% block title %}Add a New Game{% endblock %}
 
 {% block content %}
-<h2 class="mb-4">Add a New Classic Game</h2>
-<form action="/upload" method="post" enctype="multipart/form-data">
-    <label for="title">Game Title:</label>
-    <input type="text" name="title" id="title" required><br>
+<div class="container">
+    <h2 class="mb-4">Add a New Classic Game</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="title">Game Title:</label>
+        <input type="text" name="title" id="title" required><br>
 
-    <label for="platform">Platform:</label>
-    <input type="text" name="platform" id="platform" required><br>
+        <label for="platform">Platform:</label>
+        <input type="text" name="platform" id="platform" required><br>
 
-    <label for="description">Description:</label><br>
-    <textarea name="description" id="description" rows="4" cols="50" required></textarea><br>
+        <label for="description">Description:</label><br>
+        <textarea name="description" id="description" rows="4" cols="50" required></textarea><br>
 
-    <label for="image">Upload Game Image:</label>
-    <input type="file" name="image" id="image" accept="image/*" required><br><br>
+        <label for="image">Upload Game Image:</label>
+        <input type="file" name="image" id="image" accept="image/*" required><br><br>
 
-    <input type="submit" value="Submit">
-</form>
-<script src="/static/verify.js"></script>
+        <input type="submit" value="Submit">
+    </form>
+    <script src="/static/verify.js"></script>
+
+</div>
 {% endblock %}
